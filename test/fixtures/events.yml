@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  address: MyString
+  start_time: 2018-08-06 15:27:39
+  end_time: 2018-08-06 15:27:39
+  completed: false
+  capacity: 1
+  description: MyString
+  user: one
+
+two:
+  address: MyString
+  start_time: 2018-08-06 15:27:39
+  end_time: 2018-08-06 15:27:39
+  completed: false
+  capacity: 1
+  description: MyString
+  user: two
