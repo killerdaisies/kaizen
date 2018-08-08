@@ -1,5 +1,5 @@
 class Api::V1::UsersController < Api::V1::BaseController
-    before_action :set_user, only: [ :show, :edit, :update, :destroy ]
+    before_action :set_user, only: [ :show, :edit, :update, :destroy, :create]
 
   def index
     @users = User.all
@@ -24,9 +24,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   end
 
   def create
-    # @user =
-    @user = @user.update(user_params)
-    if @user.save
+    if @user.update(user_params)
       render :show, status: :created
     else
       render_error
