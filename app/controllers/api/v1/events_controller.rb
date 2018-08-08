@@ -43,7 +43,7 @@ class Api::V1::EventsController < Api::V1::BaseController
   end
 
   def event_params
-    params.require(:event).permit(:address, :description, :start_time, :end_time, :capacity, :completed)
+    params.require(:event).permit(:address, :description, :start_time, :end_time, :capacity, :completed, :user_id)
   end
 
 

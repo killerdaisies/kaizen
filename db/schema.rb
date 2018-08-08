@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_06_072756) do
+ActiveRecord::Schema.define(version: 2018_08_08_080327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,12 +28,12 @@ ActiveRecord::Schema.define(version: 2018_08_06_072756) do
     t.string "address"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.boolean "completed"
     t.integer "capacity"
     t.string "description"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "completed", default: false
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
