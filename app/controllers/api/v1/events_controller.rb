@@ -23,7 +23,19 @@ class Api::V1::EventsController < Api::V1::BaseController
   end
 
   def create
-    @event = Event.new(event_params)
+    # create a new hash with params fixed the model, combine date and time
+    # 1. create a new hash called attributes ...create from event_params ....= Hash.new
+    # 2. ccombine start_date and start_time, end_date and end_time into 2 fields instead of 4
+    # 3. pass attributes to Event.new....like Event.new(attributes)
+    # attr = {}
+    # attr = { event_params[:start_date], event_params[:end_date], event_params[:end_time], event_params[:start_time]}
+    d = event_params[:start_date]
+    t = event_params[:start_time]
+    dd = event_params[:end_date]
+    tt = event_params[:end_time]
+    event_params[:start] = DateTime.new(d.year, d.month, d.day, t.hour, t.min, t.sec, t.zone)
+    event_params[:end] = DateTime.new( dd.year, dd.month, dd.day tt.hour, tt.min, tt.sec, tt.zone)
+    @event = Event.new(event_params.except(:start_time, :start_date, :end_time, :end_date))
     if @event.save
       render :show, status: :created
     else
@@ -43,7 +55,7 @@ class Api::V1::EventsController < Api::V1::BaseController
   end
 
   def event_params
-    params.require(:event).permit(:address, :description, :start_time, :end_time, :capacity, :completed, :user_id)
+    params.require(:event).permit(:address, :description, :start_date, :end_date, :start_time, :end_time, :start, :end, :capacity, :completed, :user_id)
   end
 
 
