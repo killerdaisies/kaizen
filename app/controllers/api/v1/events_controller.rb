@@ -34,7 +34,7 @@ class Api::V1::EventsController < Api::V1::BaseController
     dd = event_params[:end_date]
     tt = event_params[:end_time]
     event_params[:start] = DateTime.new(d.year, d.month, d.day, t.hour, t.min, t.sec, t.zone)
-    event_params[:end] = DateTime.new( dd.year, dd.month, dd.day tt.hour, tt.min, tt.sec, tt.zone)
+    event_params[:end] = DateTime.new( dd.year, dd.month, dd.day, tt.hour, tt.min, tt.sec, tt.zone)
     @event = Event.new(event_params.except(:start_time, :start_date, :end_time, :end_date))
     if @event.save
       render :show, status: :created
