@@ -1,1 +1,1 @@
-json.extract! @event, :id, :description, :start, :end, :capacity, :completed
+json.extract! @event, :id,:address, :description, :start, :end, :capacity, :completed
