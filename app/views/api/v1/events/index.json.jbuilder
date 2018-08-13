@@ -7,5 +7,6 @@ json.events do
     json.end event.end.strftime("%e %b %Y %H:%M:%S%p")
     json.capacity event.capacity
     json.completed event.completed
+    json.user_id event.user_id
   end
 end
