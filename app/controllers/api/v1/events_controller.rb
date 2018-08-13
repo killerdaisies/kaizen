@@ -1,7 +1,8 @@
 class Api::V1::EventsController < Api::V1::BaseController
   before_action :set_event, only: [ :show, :edit, :update, :destroy ]
   def index
-    @events = Event.all
+    @user = User.find(params[:user_id])
+    @events = @user.events
   end
 
   def show
@@ -19,6 +20,7 @@ class Api::V1::EventsController < Api::V1::BaseController
   end
 
   def new
+    @user = User.find(params[:user_id])
     @event = Event.new
   end
 
@@ -45,7 +47,7 @@ class Api::V1::EventsController < Api::V1::BaseController
     @event = Event.new(event_params)
     @event.start = @start
     @event.end = @end
-    p "done saving"
+    @event.user = User.find(params[:user_id])
     if @event.save
       render :show, status: :created
     else

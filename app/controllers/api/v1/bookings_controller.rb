@@ -19,11 +19,13 @@ class Api::V1::BookingsController < Api::V1::BaseController
   end
 
   def new
+    @user = User.find(params[:user_id])
     @booking = Booking.new
   end
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.user = User.find(params[:user_id])
     if @booking.save
       render :show, status: :created
     else
