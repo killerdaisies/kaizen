@@ -31,19 +31,12 @@ class Api::V1::EventsController < Api::V1::BaseController
     # 3. pass attributes to Event.new....like Event.new(attributes)
     # attr = {}
     # attr = { event_params[:start_date], event_params[:end_date], event_params[:end_time], event_params[:start_time]}
-    p "started create"
-    d = params[:start_date].to_date
-    p d
-    t = params[:start_time].to_time
-    p t
-    dd = params[:end_date].to_date
-    tt = params[:end_time].to_time
+    d = params[:event][:start_date].to_date
+    t = params[:event][:start_time].to_time
+    dd = params[:event][:end_date].to_date
+    tt = params[:event][:end_time].to_time
     @start = DateTime.new(d.year, d.month, d.day, t.hour, t.min, t.sec, t.zone)
-    p @start
-    p "begin saving"
     @end = DateTime.new(dd.year, dd.month, dd.day, tt.hour, tt.min, tt.sec, tt.zone)
-    p "saving end time: "
-    p @end
     @event = Event.new(event_params)
     @event.start = @start
     @event.end = @end
@@ -67,7 +60,7 @@ class Api::V1::EventsController < Api::V1::BaseController
   end
 
   def event_params
-    params.require(:event).permit(:address, :longitude, :latitude, :description, :start_date, :end_date, :start_time, :end_time, :start, :end, :capacity, :completed, :user_id)
+    params.require(:event).permit(:address, :longitude, :latitude, :description, :start, :end, :capacity, :completed, :user_id).except(:start_date, :start_time, :end_time, :end_date)
   end
 
 
