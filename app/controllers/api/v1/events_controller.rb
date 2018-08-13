@@ -9,9 +9,31 @@ class Api::V1::EventsController < Api::V1::BaseController
   end
 
   def edit
+    # d = params[:event][:start_date].to_date
+    # t = params[:event][:start_time].to_time
+    # dd = params[:event][:end_date].to_date
+    # tt = params[:event][:end_time].to_time
+    # @start = DateTime.new(d.year, d.month, d.day, t.hour, t.min, t.sec, t.zone)
+    # @end = DateTime.new(dd.year, dd.month, dd.day, tt.hour, tt.min, tt.sec, tt.zone)
+    # @event.start = @start
+    # @event.end = @end
   end
 
   def update
+    d = params[:event][:start_date].to_date
+    t = params[:event][:start_time].to_time
+    dd = params[:event][:end_date].to_date
+    tt = params[:event][:end_time].to_time
+    @start = DateTime.new(d.year, d.month, d.day, t.hour, t.min, t.sec, t.zone)
+    @end = DateTime.new(dd.year, dd.month, dd.day, tt.hour, tt.min, tt.sec, tt.zone)
+    @event.start = @start
+    @event.end = @end
+    # d = params[:event][:start_date].to_date
+    # t = params[:event][:start_time].to_time
+    # dd = params[:event][:end_date].to_date
+    # tt = params[:event][:end_time].to_time
+    # @start = DateTime.new(d.year, d.month, d.day, t.hour, t.min, t.sec, t.zone)
+    # @end = DateTime.new(dd.year, dd.month, dd.day, tt.hour, tt.min, tt.sec, tt.zone)
     if @event.update(event_params)
       render :show
     else
