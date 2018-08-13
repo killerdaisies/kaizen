@@ -5,8 +5,8 @@ json.events do
     json.address event.address
     json.start event.start.strftime("%e %b %Y %H:%M:%S%p")
     json.end event.end.strftime("%e %b %Y %H:%M:%S%p")
-    # json.latitude event.latitude
-    # json.longitude event.longitude
+    json.latitude event.latitude
+    json.longitude event.longitude
     json.capacity event.capacity
     json.completed event.completed
     json.user_id event.user_id

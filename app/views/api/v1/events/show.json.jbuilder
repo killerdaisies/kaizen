@@ -1,4 +1,4 @@
-json.extract! @event, :id, :description, :start, :end, :capacity, :completed, :address
+json.extract! @event, :id, :description, :start, :end, :capacity, :completed, :address, :latitude, :longitude
 json.user do
   json.id @event.user.id
   json.wechat_name @event.user.wechat_name
