@@ -9,7 +9,6 @@ json.events do
     json.longitude event.longitude
     json.capacity event.capacity
     json.completed event.completed
-    json.imageUrl event.imageUrl
     json.user_id event.user_id
   end
 end
