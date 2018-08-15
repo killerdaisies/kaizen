@@ -7,4 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 2.times do
-  User.create(wechat_name:)
+  User.create(wechat_name: "test user")
+end
+
+3.times do
+  Event.create(address: "test", user_id: 1)
+end

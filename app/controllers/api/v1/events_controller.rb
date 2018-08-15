@@ -1,8 +1,8 @@
 class Api::V1::EventsController < Api::V1::BaseController
-  before_action :set_event, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_event, only: [ :show, :edit, :destroy ]
   def index
     @user = User.find(params[:user_id])
-    @events = @user.events
+    @booked_events = @user.booked_events.where(completed: false)
   end
 
   def show
@@ -20,6 +20,8 @@ class Api::V1::EventsController < Api::V1::BaseController
   end
 
   def update
+    p params[:id]
+    @event = Event.find(params[:id].to_i)
     d = params[:event][:start_date].to_date
     t = params[:event][:start_time].to_time
     dd = params[:event][:end_date].to_date
@@ -82,7 +84,7 @@ class Api::V1::EventsController < Api::V1::BaseController
   end
 
   def event_params
-    params.require(:event).permit(:address, :longitude, :latitude, :description, :start, :end, :capacity, :completed, :user_id, :photo).except(:start_date, :start_time, :end_time, :end_date)
+    params.require(:event).permit(:id, :address, :longitude, :latitude, :description, :start, :end, :capacity, :completed, :user_id, :photo, :attendee).except(:start_date, :start_time, :end_time, :end_date)
   end
 
 
