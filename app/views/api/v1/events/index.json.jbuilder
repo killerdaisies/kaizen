@@ -8,6 +8,7 @@ json.events do
     json.latitude event.latitude
     json.longitude event.longitude
     json.capacity event.capacity
+    json.photo event.photo
     json.completed event.completed
     json.user_id event.user_id
   end

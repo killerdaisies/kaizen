@@ -82,7 +82,7 @@ class Api::V1::EventsController < Api::V1::BaseController
   end
 
   def event_params
-    params.require(:event).permit(:address, :longitude, :latitude, :description, :start, :end, :capacity, :completed, :user_id).except(:start_date, :start_time, :end_time, :end_date)
+    params.require(:event).permit(:address, :longitude, :latitude, :description, :start, :end, :capacity, :completed, :user_id, :photo).except(:start_date, :start_time, :end_time, :end_date)
   end
 
 
