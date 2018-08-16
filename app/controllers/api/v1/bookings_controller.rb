@@ -1,7 +1,6 @@
 class Api::V1::BookingsController < Api::V1::BaseController
   before_action :set_booking, only: [ :show, :edit, :update, :destroy ]
   def index
-    @bookings = Booking.all
   end
 
   def show
